@@ -31,9 +31,16 @@ public class AddFromPositionZero {
             for(index = 1; index < configData.size(); index ++) {
                 elementSums += configData.get(index);
                 if(elementSums > numberToAdd){
-                    int value = configData.get(index);
-                    int valueBeforeCurrentIndex = (elementSums - value);
-                    subElement = numberToAdd - valueBeforeCurrentIndex;
+                    int value = configData.get(index); // getting the sum value of the current index
+                    int valueBeforeCurrentIndex = (elementSums - value); // sum value before the current index value was added to the sum
+                    subElement = numberToAdd - valueBeforeCurrentIndex; // the remaining is the sub element
+
+                    // if the subElement value is 0, ie, the required sub element is at the end of the index then
+                    if(subElement == 0) {
+                        subElement = configData.get(index - 1);
+                        index = index - 1;
+                    }
+
                     return "index: " + index + " sub element: " + subElement;
                 }
             }
