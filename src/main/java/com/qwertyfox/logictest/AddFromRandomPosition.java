@@ -12,27 +12,34 @@ public class AddFromRandomPosition {
     private static List<Integer> configData = Arrays.asList(1001, 3, 4, 5, 6, 7);
 
     public static void main(String[] args) {
-        System.out.println(addFromNonZero(2, 3, 12));
+        System.out.println(addFromNonZeroIndexAndNonZeroSubPosition(2, 3, 1));
     }
 
 
-    private static String addFromNonZero (int indexToAddFrom, int subElementToAddFrom, int nonZeroPositionNumberToAdd) {
+
+
+    private static String addFromNonZeroIndexAndNonZeroSubPosition (int indexToAddFrom, int subElementToAddFrom, int numberToAdd) {
         // left over sum from indexToAddFrom
         int initialSum = configData.get(indexToAddFrom) - subElementToAddFrom;
-
-        int index = indexToAddFrom;
 
         int elementSums = initialSum;
         int subElement;
 
         while(true) {
+
+            // if the addition does not require to jump to the next index
+            int checkNumber = configData.get(indexToAddFrom) - subElementToAddFrom;
+            if(configData.get(indexToAddFrom) < checkNumber) {
+                return "index: " + indexToAddFrom + " sub element: " + numberToAdd;
+            }
+
             // since we already know the total sum from indexToAddFrom (initialSum), the loop starts from + 1
-            for(index = indexToAddFrom +1 ; index < configData.size(); index ++ ) {
+            for(int index = indexToAddFrom +1 ; index < configData.size(); index ++ ) {
                 elementSums += configData.get(index);
-                if(elementSums > nonZeroPositionNumberToAdd) {
+                if(elementSums > numberToAdd) {
                     int value = configData.get(index);
                     int valueBeforeCurrentIndex = (elementSums - value);
-                    subElement = nonZeroPositionNumberToAdd - valueBeforeCurrentIndex;
+                    subElement = numberToAdd - valueBeforeCurrentIndex;
 
                     if(subElement == 0) {
                         subElement = configData.get(index - 1);
