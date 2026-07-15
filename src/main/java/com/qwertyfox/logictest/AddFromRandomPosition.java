@@ -12,7 +12,7 @@ public class AddFromRandomPosition {
     private static List<Integer> configData = Arrays.asList(1001, 3, 4, 5, 6, 7);
 
     public static void main(String[] args) {
-        System.out.println(addFromNonZeroIndexAndNonZeroSubPosition(2, 3, 1));
+        System.out.println(addFromNonZeroIndexAndNonZeroSubPosition(2, 1, 9));
     }
 
 
@@ -28,23 +28,18 @@ public class AddFromRandomPosition {
         while(true) {
 
             // if the addition does not require to jump to the next index
-            int checkNumber = configData.get(indexToAddFrom) - subElementToAddFrom;
-            if(configData.get(indexToAddFrom) < checkNumber) {
-                return "index: " + indexToAddFrom + " sub element: " + numberToAdd;
+            if(numberToAdd <= initialSum) {
+                return "index: " + indexToAddFrom + " sub element: " + (subElementToAddFrom + numberToAdd);
             }
 
             // since we already know the total sum from indexToAddFrom (initialSum), the loop starts from + 1
             for(int index = indexToAddFrom +1 ; index < configData.size(); index ++ ) {
                 elementSums += configData.get(index);
-                if(elementSums > numberToAdd) {
+                if(elementSums >= numberToAdd) {
                     int value = configData.get(index);
                     int valueBeforeCurrentIndex = (elementSums - value);
                     subElement = numberToAdd - valueBeforeCurrentIndex;
 
-                    if(subElement == 0) {
-                        subElement = configData.get(index - 1);
-                        index = index - 1;
-                    }
                     return "index: " + index + " sub element: " + subElement;
                 }
             }

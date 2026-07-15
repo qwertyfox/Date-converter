@@ -30,8 +30,8 @@ public class AddFromPositionZero {
         while(true) {
 
             // if the addition does not require to jump to the next index
-            if(configData.get(index) < numberToAdd) {
-                return "index: " + index + " sub element: " + numberToAdd;
+            if(numberToAdd <= elementSums) {
+                return "index: " + elementSums + " sub element: " + (elementSums + numberToAdd);
             }
 
             for(index = 1; index < configData.size(); index ++) {
