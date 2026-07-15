@@ -12,7 +12,7 @@ public class AddFromRandomPosition {
     private static List<Integer> configData = Arrays.asList(1001, 3, 4, 5, 6, 7);
 
     public static void main(String[] args) {
-        System.out.println(addFromNonZeroIndexAndNonZeroSubPosition(2, 1, 9));
+        System.out.println(addFromNonZeroIndexAndNonZeroSubPosition(2, 3, 13));
     }
 
 
@@ -43,10 +43,10 @@ public class AddFromRandomPosition {
                     return "index: " + index + " sub element: " + subElement;
                 }
             }
-
+            break;
         }
 
-
+          return "EXCEEDS";
     }
 
 }
