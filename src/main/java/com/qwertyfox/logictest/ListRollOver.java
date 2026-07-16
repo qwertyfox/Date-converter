@@ -19,50 +19,57 @@ public class ListRollOver {
     private static List<Integer> listD = Arrays.asList(1004, 3, 4, 5, 6, 7);
     private static List<Integer> listE = Arrays.asList(1005, 3, 4, 5, 6, 7);
 
-    private static List<List<Integer>> computationalList = new ArrayList<>();
+    private static List<List<Integer>> listOfLists = new ArrayList<>();
+    private static Map<Integer, List<Integer>> yearList = new HashMap<>();
     private static Map<Integer, Integer> mapWithListTotal = new HashMap<>();
 
     public static void main(String[] args) {
         addToMap();
-        calculateTotal();
+        computeLists();
 
         System.out.println(mapWithListTotal);
+        System.out.println(findList(44));
     }
 
     // will be done by the Buffered reader
     private static void addToMap () {
-        computationalList.add(hookList);
-        computationalList.add(listA);
-        computationalList.add(listB);
-        computationalList.add(listC);
-        computationalList.add(listD);
-        computationalList.add(listE);
+        listOfLists.add(hookList);
+        listOfLists.add(listA);
+        listOfLists.add(listB);
+        listOfLists.add(listC);
+        listOfLists.add(listD);
+        listOfLists.add(listE);
     }
 
-    private static void calculateTotal() {
-        for(List<Integer> list: computationalList){
+    private static void computeLists() {
+        for(List<Integer> list: listOfLists){
             int listSum = 0;
             for(int i = 1; i < list.size(); i ++) {
                 listSum += list.get(i);
             }
             mapWithListTotal.put(list.get(0), listSum);
+            yearList.put(list.get(0), list);
         }
     }
 
     private static List<Integer> findList (int numberToAdd) {
-        int total = 0;
 
         int firstEntry =  mapWithListTotal.keySet().iterator().next();
         int firstEntryTotal = mapWithListTotal.get(firstEntry);
 
-//        if(numberToAdd <= firstEntryTotal) {
-//            return
-//        }
-
-
-        for(Integer s: mapWithListTotal.keySet()) {
-            mapWithListTotal.get(s);
+        if(numberToAdd <= firstEntryTotal) {
+            return yearList.get(firstEntry);
         }
+
+        int total = 0;
+        for(Map.Entry<Integer, Integer> entry : mapWithListTotal.entrySet()){
+            total += entry.getValue();
+
+            if(total >= numberToAdd) {
+                return yearList.get(entry.getKey());
+            }
+        }
+
         return null;
     }
 
