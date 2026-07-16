@@ -1,5 +1,6 @@
 package com.qwertyfox.logictest;
 
+
 import java.util.*;
 
 /**
@@ -20,15 +21,19 @@ public class ListRollOver {
     private static List<Integer> listE = Arrays.asList(1005, 3, 4, 5, 6, 7);
 
     private static List<List<Integer>> listOfLists = new ArrayList<>();
-    private static Map<Integer, List<Integer>> yearList = new HashMap<>();
-    private static Map<Integer, Integer> mapWithListTotal = new HashMap<>();
+    private static Map<Integer, List<Integer>> yearList = new LinkedHashMap<>();
+    private static Map<Integer, Integer> mapWithListTotal = new LinkedHashMap<>();
 
     public static void main(String[] args) {
         addToMap();
         computeLists();
 
         System.out.println(mapWithListTotal);
-        System.out.println(findList(44));
+
+        ListRollOverDataModel listRollOverDataModel = findList(44);
+        System.out.println(listRollOverDataModel.list);
+        System.out.println(listRollOverDataModel.remainingJumps);
+
     }
 
     // will be done by the Buffered reader
@@ -52,22 +57,27 @@ public class ListRollOver {
         }
     }
 
-    private static List<Integer> findList (int numberToAdd) {
+    private static ListRollOverDataModel findList (int numberToAdd) {
 
         int firstEntry =  mapWithListTotal.keySet().iterator().next();
         int firstEntryTotal = mapWithListTotal.get(firstEntry);
 
         if(numberToAdd <= firstEntryTotal) {
-            return yearList.get(firstEntry);
+            List<Integer> list = yearList.get(firstEntry);
+            int leftOver = firstEntryTotal - numberToAdd;
+            return new ListRollOverDataModel(list, leftOver);
         }
 
-        int total = 0;
-        for(Map.Entry<Integer, Integer> entry : mapWithListTotal.entrySet()){
-            total += entry.getValue();
+        int previousTotal = 0;
 
-            if(total >= numberToAdd) {
-                return yearList.get(entry.getKey());
+        for(Map.Entry<Integer, Integer> entry : mapWithListTotal.entrySet()){
+            int newTotal = previousTotal + entry.getValue();
+
+            if(newTotal >= numberToAdd) {
+                int leftOver = numberToAdd - previousTotal;
+                return new ListRollOverDataModel(yearList.get(entry.getKey()), leftOver);
             }
+            previousTotal = newTotal;
         }
 
         return null;
