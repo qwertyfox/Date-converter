@@ -3,12 +3,13 @@ package com.qwertyfox.logictest;
 
 import java.util.*;
 
-/**
- * Data Structure list a -> [1001, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]
- * Data Structure list b -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]
- * Data Structure list c -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]
- * Data Structure list d -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]
- * Data Structure list e -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]
+/**                                                                                                 Cumulative sum
+ * Data Structure hookList = [1000, (1,2,3,4,5) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]          18
+ * Data Structure list a -> [1001, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]     43
+ * Data Structure list b -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]     68
+ * Data Structure list c -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]     93
+ * Data Structure list d -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]     118
+ * Data Structure list e -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]     143
  */
 
 public class ListRollOver {
@@ -29,10 +30,19 @@ public class ListRollOver {
         computeLists();
 
         System.out.println(mapWithListTotal);
+        ListRollOverDataModel listRollOverDataModel;
 
-        ListRollOverDataModel listRollOverDataModel = findList(44);
-        System.out.println(listRollOverDataModel.list);
-        System.out.println(listRollOverDataModel.remainingJumps);
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            System.out.print("Enter value: ");
+            int value = scanner.nextInt();
+
+            listRollOverDataModel = findList(value);
+            System.out.println(listRollOverDataModel.list);
+            System.out.println(listRollOverDataModel.remainingJumps);
+
+        }
+
 
     }
 
@@ -58,15 +68,6 @@ public class ListRollOver {
     }
 
     private static ListRollOverDataModel findList (int numberToAdd) {
-
-        int firstEntry =  mapWithListTotal.keySet().iterator().next();
-        int firstEntryTotal = mapWithListTotal.get(firstEntry);
-
-        if(numberToAdd <= firstEntryTotal) {
-            List<Integer> list = yearList.get(firstEntry);
-            int leftOver = firstEntryTotal - numberToAdd;
-            return new ListRollOverDataModel(list, leftOver);
-        }
 
         int previousTotal = 0;
 
