@@ -17,7 +17,7 @@ public class AddFromPositionZero {
     }
 
     public static void addFromFirstElement() {
-        int valueToAdd = 13;
+        int valueToAdd = 6;
         System.out.println(addingToDataStructure(valueToAdd + 1)); // logical requirement
     }
 
@@ -27,12 +27,6 @@ public class AddFromPositionZero {
         int index = 1;
         int subElement;
 
-        while(true) {
-
-            // if the addition does not require to jump to the next index
-            if(numberToAdd <= elementSums) {
-                return "index: " + elementSums + " sub element: " + (elementSums + numberToAdd);
-            }
 
             for(index = 1; index < configData.size(); index ++) {
                 elementSums += configData.get(index);
@@ -50,6 +44,6 @@ public class AddFromPositionZero {
                     return "index: " + index + " sub element: " + subElement;
                 }
             }
-        }
+            return "";
     }
 }

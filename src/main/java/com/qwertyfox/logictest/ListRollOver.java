@@ -40,6 +40,7 @@ public class ListRollOver {
             listRollOverDataModel = findList(value);
             System.out.println(listRollOverDataModel.list);
             System.out.println(listRollOverDataModel.remainingJumps);
+            System.out.println(addingToDataStructure(listRollOverDataModel.list, listRollOverDataModel.remainingJumps));
 
         }
 
@@ -84,19 +85,28 @@ public class ListRollOver {
         return null;
     }
 
-
-    private static void addToList (int indexToAddFrom, int subElementToAddFrom, int nonZeroPositionNumberToAdd) {
-
-        int initialSum = listA.get(indexToAddFrom) - subElementToAddFrom;
-
-        int elementSum = initialSum;
+    private static String addingToDataStructure (List<Integer> list ,int numberToAdd) {
+        int elementSums = 0;
+        int index = 1;
         int subElement;
 
-        while (true) {
 
+            for(index = 1; index < list.size(); index ++) {
+                elementSums += list.get(index);
+                if(elementSums >= numberToAdd){
+                    int value = list.get(index); // getting the sum value of the current index
+                    int valueBeforeCurrentIndex = (elementSums - value); // sum value before the current index value was added to the sum
+                    subElement = numberToAdd - valueBeforeCurrentIndex; // the remaining is the sub element
 
-        }
+                    // if the subElement value is 0, ie, the required sub element is at the end of the index then
+                    if(subElement == 0) {
+                        subElement = list.get(index - 1);
+                        index = index - 1;
+                    }
 
-
+                    return "index: " + index + " sub element: " + subElement;
+                }
+            }
+            return "";
     }
 }
