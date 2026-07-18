@@ -1,4 +1,4 @@
-package com.qwertyfox.logictest;
+package com.qwertyfox.logic;
 
 
 import java.util.*;
