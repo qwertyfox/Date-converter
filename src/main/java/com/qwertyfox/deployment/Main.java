@@ -62,8 +62,8 @@ public class Main {
                     System.out.println(addingToDataStructure(listRollOverDataModel.getList(), listRollOverDataModel.getRemainingJumps()));
 
                 }
-            }catch (Exception ignored) {
-                ignored.printStackTrace();
+            }catch (Exception exception) {
+                exception.printStackTrace();
             }
         }
     }
