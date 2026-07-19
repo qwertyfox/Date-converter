@@ -1,11 +1,15 @@
-package com.qwertyfox.hooks;
+package com.qwertyfox.demo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class Hook2083BS {
+/**
+ * Demo class using accurate small data set to convert AD to BS
+ */
+
+public class DemoSmallDataSet {
 
     public static void main(String[] args) {
 

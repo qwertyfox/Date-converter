@@ -1,4 +1,4 @@
-package com.qwertyfox.hooks;
+package com.qwertyfox.demo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -6,7 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Hook2050ADScanner {
+/**
+ * Converts BS to AD
+ */
+
+public class BStoAD_demo {
 
     static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Dataset.txt");
 

@@ -1,4 +1,4 @@
-package com.qwertyfox.hooks;
+package com.qwertyfox.demo;
 
 import com.qwertyfox.logic.ListRollOverDataModel;
 
@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Hook2050BSScanner {
+/**
+ * Converts AD to BS
+ */
+public class ADtoBS_demo {
 
     static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Dataset.txt");
 
