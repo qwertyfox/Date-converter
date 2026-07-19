@@ -58,9 +58,12 @@ public class AddToRandomPosition {
             listSum += yearL.get(i);
         }
 
+        int totalJumpsRequired = (listSum + cumulativeNumber + subElement);
         System.out.println("Cumulative sum: " + cumulativeNumber);
         System.out.println("ListSum: " + listSum);
-        System.out.println("Total jumps required: " + (listSum + cumulativeNumber + subElement));
+        System.out.println("Total jumps required: " + totalJumpsRequired);
+
+        System.out.println(addingToDataStructure(yearL, listSum+subElement));
     }
 
     // will be done by the Buffered reader
