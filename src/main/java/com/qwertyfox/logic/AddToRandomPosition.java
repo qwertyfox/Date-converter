@@ -3,7 +3,7 @@ package com.qwertyfox.logic;
 import java.util.*;
 
 /**                                                                                                 Cumulative sum
- * Data Structure hookList = [1000, (1,2,3,4,5) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]          18
+ * Data Structure hookList = [1000, (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]                      18
  * Data Structure list a -> [1001, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]     43
  * Data Structure list b -> [1002, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]     68
  * Data Structure list c -> [1003, (1,2,3) (1,2,3,4) (1,2,3,4,5) (1,2,3,4,5,6) (1,2,3,4,5,6,7)]     93
@@ -61,7 +61,6 @@ public class AddToRandomPosition {
         System.out.println("Cumulative sum: " + cumulativeNumber);
         System.out.println("ListSum: " + listSum);
         System.out.println("Total jumps required: " + (listSum + cumulativeNumber + subElement));
-        System.out.println("Year: " + listName + " month: " + index + " date " + subElement);
     }
 
     // will be done by the Buffered reader
