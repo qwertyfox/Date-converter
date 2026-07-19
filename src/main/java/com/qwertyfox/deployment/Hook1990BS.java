@@ -5,13 +5,13 @@ import com.qwertyfox.logic.ListRollOverDataModel;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Hook1990BS {
 
-    static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Bikram Sambhat raw [Claude].txt");
+//    static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Bikram Sambhat raw [Claude].txt");
+    static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Dataset Claude.txt");
 
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     static Map<Integer, List<Integer>> yearList =  calendarInitializer.getYearList();
@@ -19,7 +19,8 @@ public class Hook1990BS {
 
     public static void main(String[] args) {
 
-        String hookDateString = "14/04/2022"; // 1st Baishak 2079
+//        String hookDateString = "14/04/2022"; // 1st Baishak 2079
+        String hookDateString = "13/04/1993"; // 1st Baishak 2079
         LocalDate hookDate = convertToLocalDate(hookDateString);
 
         String testDateString = "19/07/2026";

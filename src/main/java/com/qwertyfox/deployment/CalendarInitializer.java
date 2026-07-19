@@ -49,6 +49,10 @@ public class CalendarInitializer {
                     continue;
                 }
 
+                if(line.isEmpty()) {
+                    continue;
+                }
+
                 String cleaned = line.replace("(", "").replace(")", "");
                 String[] splits = cleaned.split(",");
 
