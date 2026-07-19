@@ -3,15 +3,13 @@ package com.qwertyfox.deployment;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.List;
-import java.util.Locale;
 
-public class Main {
+public class Hook2083BS {
 
     public static void main(String[] args) {
-        ReadTxt readTxt = new ReadTxt();
-        List<List<Integer>> d = readTxt.readTxt("data/Hooked.txt");
+        CalendarInitializer calandarInitializer = CalendarInitializer.getINSTANCE();
+        List<List<Integer>> d = calandarInitializer.readTxt("data/Hooked.txt");
         System.out.println(d);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

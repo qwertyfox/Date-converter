@@ -14,4 +14,12 @@ public class ListRollOverDataModel {
         this.remainingJumps = remainingJumps;
     }
 
+    public List<Integer> getList() {
+        return list;
+    }
+
+    public int getRemainingJumps() {
+        return remainingJumps;
+    }
+
 }

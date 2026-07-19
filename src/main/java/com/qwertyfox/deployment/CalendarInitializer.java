@@ -7,7 +7,17 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadTxt {
+public class CalendarInitializer {
+
+    private static CalendarInitializer INSTANCE = new CalendarInitializer();
+
+    public static CalendarInitializer getINSTANCE() {
+        return INSTANCE;
+    }
+
+    private CalendarInitializer() {
+    }
+
 
     public List<List<Integer>> readTxt(String loc) {
 
