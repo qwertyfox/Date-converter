@@ -1,4 +1,4 @@
-package com.qwertyfox.deployment;
+package com.qwertyfox.hooks;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

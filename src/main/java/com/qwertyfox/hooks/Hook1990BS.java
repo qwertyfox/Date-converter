@@ -1,4 +1,4 @@
-package com.qwertyfox.deployment;
+package com.qwertyfox.hooks;
 
 import com.qwertyfox.logic.ListRollOverDataModel;
 
@@ -7,11 +7,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Hook1990BS {
 
-//    static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Bikram Sambhat raw [Claude].txt");
-    static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Dataset Claude.txt");
+    static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Dataset.txt");
 
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     static Map<Integer, List<Integer>> yearList =  calendarInitializer.getYearList();
@@ -19,22 +19,26 @@ public class Hook1990BS {
 
     public static void main(String[] args) {
 
-//        String hookDateString = "14/04/2022"; // 1st Baishak 2079
-        String hookDateString = "13/04/1993"; // 1st Baishak 2079
+        String hookDateString = "13/04/1993"; // 1st Baishak 2050
         LocalDate hookDate = convertToLocalDate(hookDateString);
 
-        String testDateString = "19/07/2026";
-        LocalDate testDate = convertToLocalDate(testDateString);
+        ListRollOverDataModel listRollOverDataModel;
+        Scanner scanner = new Scanner(System.in);
 
-//        long daysBetween = hookDate.until(LocalDate.now(), ChronoUnit.DAYS);
-//        System.out.println("Days from 01/01/2050 " + daysBetween);
+        while(true) {
+            System.out.print("Enter AD date: ");
+            String date = scanner.nextLine();
 
-        long daysBetweenTest = hookDate.until(testDate, ChronoUnit.DAYS);
+            LocalDate testDate = convertToLocalDate(date);
 
-        ListRollOverDataModel listRollOverDataModel= findList((int) daysBetweenTest);
-        System.out.println(listRollOverDataModel.getList());
-        System.out.println(listRollOverDataModel.getRemainingJumps());
-        System.out.println(addingToDataStructure(listRollOverDataModel.getList(), listRollOverDataModel.getRemainingJumps()));
+            long daysBetweenTest = hookDate.until(testDate, ChronoUnit.DAYS);
+
+            listRollOverDataModel= findList((int) daysBetweenTest);
+            System.out.println(listRollOverDataModel.getList());
+            System.out.println(listRollOverDataModel.getRemainingJumps());
+            System.out.println(addingToDataStructure(listRollOverDataModel.getList(), listRollOverDataModel.getRemainingJumps()));
+
+        }
 
     }
 
