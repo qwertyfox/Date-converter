@@ -9,7 +9,7 @@ public class Hook2083BS {
 
     public static void main(String[] args) {
 
-        CalendarInitializer calendarInitializer = new CalendarInitializer("data/Hooked.txt");
+        CalendarInitializer calendarInitializer = new CalendarInitializer("data/Small dataset.txt");
         List<List<Integer>> calendarList = calendarInitializer.getListOfLists();
         System.out.println(calendarList);
 
@@ -18,7 +18,7 @@ public class Hook2083BS {
         String hookDateString = "14/04/2026";
         LocalDate hookDate = LocalDate.parse(hookDateString, formatter);
 
-        String testDateString = "06/06/2026";
+        String testDateString = "19/07/2026";
         LocalDate testDate = LocalDate.parse(testDateString, formatter);
 
         long daysBetween = hookDate.until(LocalDate.now(), ChronoUnit.DAYS);
@@ -27,7 +27,6 @@ public class Hook2083BS {
         long daysBetweenTest = hookDate.until(testDate, ChronoUnit.DAYS);
 
         List<Integer> theList = calendarList.get(0);
-//        System.out.println(addingToDataStructure(theList, (int) daysBetween));
         System.out.println(addingToDataStructure(theList, (int) daysBetweenTest));
 
     }

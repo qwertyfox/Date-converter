@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Hook1990BS {
+public class Hook2050BSScanner {
 
     static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Dataset.txt");
 
@@ -64,8 +64,8 @@ public class Hook1990BS {
                     subElement = list.get(index - 1);
                     index = index - 1;
                 }
-
-                return "index: " + index + " sub element: " + subElement;
+                System.out.println("index: " + index + " sub element: " + subElement);
+                return "Year: " + list.get(0) + " Month: " + index + " date: " + subElement;
             }
         }
         return "";
