@@ -10,7 +10,7 @@ public class Hook2083BS {
     public static void main(String[] args) {
 
         CalendarInitializer calendarInitializer = new CalendarInitializer("data/Hooked.txt");
-        List<List<Integer>> calendarList = calendarInitializer.getCalendarList();
+        List<List<Integer>> calendarList = calendarInitializer.getDataList();
         System.out.println(calendarList);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

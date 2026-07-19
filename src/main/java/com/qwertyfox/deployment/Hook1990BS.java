@@ -4,15 +4,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Map;
 
 public class Hook1990BS {
+
+    static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Bikram Sambhat raw [Claude].txt");
+
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    static Map<Integer, List<Integer>> yearList =  calendarInitializer.getYearList();
 
     public static void main(String[] args) {
 
-        CalendarInitializer calendarInitializer = new CalendarInitializer("data/Bikram Sambhat raw [Claude].txt");
-        List<List<Integer>> allYearCalandarList = calendarInitializer.getCalendarList();
-        System.out.println(allYearCalandarList);
+
 
         String hookDateString = "12/05/1993"; // 1st Baishak 2050
         LocalDate hookDate = convertToLocalDate(hookDateString);

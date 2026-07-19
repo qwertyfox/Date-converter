@@ -13,16 +13,16 @@ public class CalendarInitializer {
 
     private String loc;
 
-    private List<List<Integer>> calendarList = new ArrayList<>();
+    private List<List<Integer>> dataList = new ArrayList<>();
     private Map<Integer, List<Integer>> yearList = new LinkedHashMap<>();
     private Map<Integer, Integer> mapWithListTotal =  new LinkedHashMap<>();
 
     public CalendarInitializer(String loc) {
-        calendarList = load(loc);
+        dataList = load(loc);
     }
 
-    public List<List<Integer>> getCalendarList() {
-        return calendarList;
+    public List<List<Integer>> getDataList() {
+        return dataList;
     }
 
     public Map<Integer, List<Integer>> getYearList() {
