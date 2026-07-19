@@ -43,8 +43,6 @@ public class ListRollOver {
             System.out.println(addingToDataStructure(listRollOverDataModel.list, listRollOverDataModel.remainingJumps));
 
         }
-
-
     }
 
     // will be done by the Buffered reader

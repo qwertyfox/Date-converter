@@ -47,15 +47,20 @@ public class Main {
                 }
 
                 if(!flag){
+                    // Convert to AD
                     int requiredJumps = findNumberOfDays(input);
-                    LocalDate AD_Date = LocalDate.of(1993, 4, 13).plusDays(requiredJumps - 1);
-                    System.out.println(formatter.format(AD_Date));
+                    LocalDate BS_Date = LocalDate.of(1993, 4, 13).plusDays(requiredJumps - 1);
+                    System.out.println(formatter.format(BS_Date));
+                    System.out.println(BS_Date.getDayOfWeek());
                 }else {
-                    LocalDate BS_Date = convertToLocalDate(input);
-                    long daysBetweenTest = hookDate.until(BS_Date, ChronoUnit.DAYS);
+                    // Convert to BS
+                    LocalDate AD_Date = convertToLocalDate(input);
+                    long daysBetweenTest = hookDate.until(AD_Date, ChronoUnit.DAYS);
                     listRollOverDataModel= findList((int) daysBetweenTest);
 
+                    System.out.println(AD_Date.getDayOfWeek());
                     System.out.println(addingToDataStructure(listRollOverDataModel.getList(), listRollOverDataModel.getRemainingJumps()));
+
                 }
             }catch (Exception ignored) {
                 ignored.printStackTrace();
@@ -112,7 +117,6 @@ public class Main {
                     subElement = list.get(index - 1);
                     index = index - 1;
                 }
-                System.out.println("index: " + index + " sub element: " + subElement);
                 return "Year: " + list.get(0) + " Month: " + index + " date: " + subElement;
             }
         }
