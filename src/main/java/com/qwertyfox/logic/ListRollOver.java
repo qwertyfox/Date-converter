@@ -27,7 +27,7 @@ public class ListRollOver {
 
     public static void main(String[] args) {
         addToMap();
-        computeLists();
+        createMapWithTotal();
 
         System.out.println(mapWithListTotal);
         ListRollOverDataModel listRollOverDataModel;
@@ -57,7 +57,7 @@ public class ListRollOver {
         listOfLists.add(listE);
     }
 
-    private static void computeLists() {
+    private static void createMapWithTotal() {
         for(List<Integer> list: listOfLists){
             int listSum = 0;
             for(int i = 1; i < list.size(); i ++) {

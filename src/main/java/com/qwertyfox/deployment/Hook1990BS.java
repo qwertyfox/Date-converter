@@ -1,8 +1,11 @@
 package com.qwertyfox.deployment;
 
+import com.qwertyfox.logic.ListRollOverDataModel;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +15,7 @@ public class Hook1990BS {
 
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     static Map<Integer, List<Integer>> yearList =  calendarInitializer.getYearList();
+    static Map<Integer, Integer> mapWithListTotal = calendarInitializer.getMapWithListTotal();
 
     public static void main(String[] args) {
 
@@ -60,21 +64,21 @@ public class Hook1990BS {
         return "";
     }
 
-//    private static ListRollOverDataModel findList(int numberToAdd) {
-//
-//        int previousTotal = 0;
-//
-//        for (Map.Entry<Integer, Integer> entry : mapWithListTotal.entrySet()) {
-//            int newTotal = previousTotal + entry.getValue();
-//
-//            if (newTotal >= numberToAdd) {
-//                int leftOver = numberToAdd - previousTotal;
-//                return new ListRollOverDataModel(yearList.get(entry.getKey()), leftOver);
-//            }
-//            previousTotal = newTotal;
-//        }
-//
-//        return null;
-//    }
+    private static ListRollOverDataModel findList(int numberToAdd) {
+
+        int previousTotal = 0;
+
+        for (Map.Entry<Integer, Integer> entry : mapWithListTotal.entrySet()) {
+            int newTotal = previousTotal + entry.getValue();
+
+            if (newTotal >= numberToAdd) {
+                int leftOver = numberToAdd - previousTotal;
+                return new ListRollOverDataModel(yearList.get(entry.getKey()), leftOver);
+            }
+            previousTotal = newTotal;
+        }
+
+        return null;
+    }
 
 }

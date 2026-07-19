@@ -1,5 +1,7 @@
 package com.qwertyfox.deployment;
 
+import com.qwertyfox.logic.ListRollOverDataModel;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,16 +15,17 @@ public class CalendarInitializer {
 
     private String loc;
 
-    private List<List<Integer>> dataList = new ArrayList<>();
+    private List<List<Integer>> listOfLists = new ArrayList<>();
     private Map<Integer, List<Integer>> yearList = new LinkedHashMap<>();
     private Map<Integer, Integer> mapWithListTotal =  new LinkedHashMap<>();
 
     public CalendarInitializer(String loc) {
-        dataList = load(loc);
+        listOfLists = load(loc);
+        createMapWithTotal();
     }
 
-    public List<List<Integer>> getDataList() {
-        return dataList;
+    public List<List<Integer>> getListOfLists() {
+        return listOfLists;
     }
 
     public Map<Integer, List<Integer>> getYearList() {
@@ -63,6 +66,17 @@ public class CalendarInitializer {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void createMapWithTotal() {
+        for(List<Integer> list: listOfLists){
+            int listSum = 0;
+            for(int i = 1; i < list.size(); i ++) {
+                listSum += list.get(i);
+            }
+            mapWithListTotal.put(list.get(0), listSum);
+            yearList.put(list.get(0), list);
+        }
     }
 
 }
