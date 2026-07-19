@@ -22,7 +22,7 @@ public class AddToRandomPosition {
 
 
     private static List<List<Integer>> listOfLists = new ArrayList<>();
-    private static Map<Integer, List<Integer>> yearList = new LinkedHashMap<>();
+    private static Map<Integer, List<Integer>> yearMap = new LinkedHashMap<>();
     private static Map<Integer, Integer> mapWithListTotal = new LinkedHashMap<>();
     private static Map<Integer, Integer> cumulativeSumMap = new LinkedHashMap<>();
 
@@ -31,12 +31,12 @@ public class AddToRandomPosition {
         createMapWithTotal();
         createCumulativeSumMap();
         System.out.println("mapWithListTotal " +mapWithListTotal);
-        System.out.println("yearList " +yearList);
+        System.out.println("yearList " + yearMap);
         System.out.println("listOfLists " +listOfLists);
         System.out.println("cumulativeSumMap" + cumulativeSumMap);
 
 
-        String date = "03/03/1001";
+        String date = "01/01/1003";
         findNumberOfDays(date);
     }
 
@@ -51,7 +51,7 @@ public class AddToRandomPosition {
         int cumulativeNumber = cumulativeSumMap.get(listName - 1);
 
 
-        List<Integer> yearL = yearList.get(listName);
+        List<Integer> yearL = yearMap.get(listName);
         System.out.println(yearL);
         int listSum = 0;
         for(int i = 1; i <= index -1; i++) {
@@ -83,7 +83,7 @@ public class AddToRandomPosition {
                 listSum += list.get(i);
             }
             mapWithListTotal.put(list.get(0), listSum);
-            yearList.put(list.get(0), list);
+            yearMap.put(list.get(0), list);
         }
     }
 
@@ -116,7 +116,7 @@ public class AddToRandomPosition {
                     index = index - 1;
                 }
 
-                return "index: " + index + " sub element: " + subElement;
+                return "list name "+ list.get(0) + " index: " + index + " sub element: " + subElement;
             }
         }
         return "";

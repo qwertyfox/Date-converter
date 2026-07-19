@@ -14,7 +14,7 @@ public class Hook2050BSScanner {
     static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Dataset.txt");
 
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    static Map<Integer, List<Integer>> yearList =  calendarInitializer.getYearList();
+    static Map<Integer, List<Integer>> yearList =  calendarInitializer.getYearMap();
     static Map<Integer, Integer> mapWithListTotal = calendarInitializer.getMapWithListTotal();
 
     public static void main(String[] args) {
