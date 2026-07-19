@@ -19,19 +19,21 @@ public class Hook1990BS {
 
     public static void main(String[] args) {
 
-
-
-        String hookDateString = "12/05/1993"; // 1st Baishak 2050
+        String hookDateString = "14/04/2022"; // 1st Baishak 2079
         LocalDate hookDate = convertToLocalDate(hookDateString);
 
-        String testDateString = "06/06/2026";
+        String testDateString = "19/07/2026";
         LocalDate testDate = convertToLocalDate(testDateString);
 
-        long daysBetween = hookDate.until(LocalDate.now(), ChronoUnit.DAYS);
-        System.out.println(daysBetween);
+//        long daysBetween = hookDate.until(LocalDate.now(), ChronoUnit.DAYS);
+//        System.out.println("Days from 01/01/2050 " + daysBetween);
 
         long daysBetweenTest = hookDate.until(testDate, ChronoUnit.DAYS);
 
+        ListRollOverDataModel listRollOverDataModel= findList((int) daysBetweenTest);
+        System.out.println(listRollOverDataModel.getList());
+        System.out.println(listRollOverDataModel.getRemainingJumps());
+        System.out.println(addingToDataStructure(listRollOverDataModel.getList(), listRollOverDataModel.getRemainingJumps()));
 
     }
 
