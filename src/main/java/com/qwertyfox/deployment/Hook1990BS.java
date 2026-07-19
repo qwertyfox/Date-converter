@@ -10,8 +10,8 @@ public class Hook1990BS {
 
     public static void main(String[] args) {
 
-        CalendarInitializer calandarInitializer = CalendarInitializer.getINSTANCE();
-        List<List<Integer>> allYearCalandarList = calandarInitializer.readTxt("data/Bikram Sambhat raw [Claude].txt");
+        CalendarInitializer calendarInitializer = new CalendarInitializer("data/Bikram Sambhat raw [Claude].txt");
+        List<List<Integer>> allYearCalandarList = calendarInitializer.getCalendarList();
         System.out.println(allYearCalandarList);
 
         String hookDateString = "12/05/1993"; // 1st Baishak 2050

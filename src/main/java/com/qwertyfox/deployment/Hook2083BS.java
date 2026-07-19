@@ -8,9 +8,10 @@ import java.util.List;
 public class Hook2083BS {
 
     public static void main(String[] args) {
-        CalendarInitializer calandarInitializer = CalendarInitializer.getINSTANCE();
-        List<List<Integer>> d = calandarInitializer.readTxt("data/Hooked.txt");
-        System.out.println(d);
+
+        CalendarInitializer calendarInitializer = new CalendarInitializer("data/Hooked.txt");
+        List<List<Integer>> calendarList = calendarInitializer.getCalendarList();
+        System.out.println(calendarList);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -25,7 +26,7 @@ public class Hook2083BS {
 
         long daysBetweenTest = hookDate.until(testDate, ChronoUnit.DAYS);
 
-        List<Integer> theList = d.get(0);
+        List<Integer> theList = calendarList.get(0);
 //        System.out.println(addingToDataStructure(theList, (int) daysBetween));
         System.out.println(addingToDataStructure(theList, (int) daysBetweenTest));
 

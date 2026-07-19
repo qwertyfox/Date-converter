@@ -5,21 +5,35 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CalendarInitializer {
 
-    private static CalendarInitializer INSTANCE = new CalendarInitializer();
+    private String loc;
 
-    public static CalendarInitializer getINSTANCE() {
-        return INSTANCE;
+    private List<List<Integer>> calendarList = new ArrayList<>();
+    private Map<Integer, List<Integer>> yearList = new LinkedHashMap<>();
+    private Map<Integer, Integer> mapWithListTotal =  new LinkedHashMap<>();
+
+    public CalendarInitializer(String loc) {
+        calendarList = load(loc);
     }
 
-    private CalendarInitializer() {
+    public List<List<Integer>> getCalendarList() {
+        return calendarList;
     }
 
+    public Map<Integer, List<Integer>> getYearList() {
+        return yearList;
+    }
 
-    public List<List<Integer>> readTxt(String loc) {
+    public Map<Integer, Integer> getMapWithListTotal() {
+        return mapWithListTotal;
+    }
+
+    private List<List<Integer>> load (String loc) {
 
         List<List<Integer>> calandarList = new ArrayList<>();
 
