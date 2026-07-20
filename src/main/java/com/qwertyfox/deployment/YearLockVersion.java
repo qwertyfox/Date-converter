@@ -17,6 +17,7 @@ import java.util.Scanner;
 public class YearLockVersion {
     static CalendarInitializer calendarInitializer = new CalendarInitializer("data/Dataset.txt");
 
+
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     static Map<Integer, List<Integer>> yearMap = calendarInitializer.getYearMap();
     static Map<Integer, Integer> mapWithListTotal = calendarInitializer.getMapWithListTotal();
