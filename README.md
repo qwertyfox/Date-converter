@@ -12,13 +12,14 @@ Download the release files [here](https://github.com/qwertyfox/Date-converter/re
 - Current BS data set only includes dates from 2050 till 2084. This can easily be changed through configurations. <br>
 - There is no error handling. <br>
 
-## Code and logic:
+## Code:
 - The BS years are stored inside the [data](https://github.com/qwertyfox/Date-converter/tree/master/data) following (year, number of days in Baishak, number of days in Jestha and so on... )<br>
 - This data is read by [CalanderInitilizer](https://github.com/qwertyfox/Date-converter/blob/master/src/main/java/com/qwertyfox/demo/CalendarInitializer.java) and internal maps and lists are created. <br>
 - The beginning of the data set, i.e. (2050, 31...) is connected with 13/04/1993 because the BS calendar date 01/01/2050 aligns with it. <br>
 - If the conversion range is to be pushed BACKWARDS, then the Baishak 1st date in the data set's first listed year must match the AD date and should be hardcoded in the [Main](https://github.com/qwertyfox/Date-converter/blob/master/src/main/java/com/qwertyfox/deployment/Main.java) at line 23. <br> 
 - The release version of this application uses [this](https://github.com/qwertyfox/Date-converter/blob/master/src/main/java/com/qwertyfox/DeployedVersion.java) class. <br>
-  <br>
+ 
+## Logic:
 - Being the project that I did as I figured out the logic, the logic is written in [logic](https://github.com/qwertyfox/Date-converter/tree/master/src/main/java/com/qwertyfox/logic) package. <br>
 - The following is the logical progression till the final version:
   - [AddFromPositionZero](https://github.com/qwertyfox/Date-converter/blob/master/src/main/java/com/qwertyfox/logic/AddFromPositionZero.java)
@@ -29,7 +30,5 @@ Download the release files [here](https://github.com/qwertyfox/Date-converter/re
   - [ADtoBS_demo](https://github.com/qwertyfox/Date-converter/blob/master/src/main/java/com/qwertyfox/demo/ADtoBS_demo.java)
   - [BStoAD_demo](https://github.com/qwertyfox/Date-converter/blob/master/src/main/java/com/qwertyfox/demo/BStoAD_demo.java)
   - [Main](https://github.com/qwertyfox/Date-converter/blob/master/src/main/java/com/qwertyfox/deployment/Main.java)
-
-
 
 
